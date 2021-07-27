@@ -33,5 +33,5 @@ module "elasticsearch" {
   region = var.region
   sns_topic_arn = var.es_sns_arn
   iam_master_arn = var.iam_master_arn
-  advanced_security_enabled = true
+  advanced_security_enabled = false
 }
