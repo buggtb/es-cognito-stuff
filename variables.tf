@@ -21,3 +21,11 @@ variable "region" {
 variable "es_sns_arn" {
   default = "arn:aws:sns:us-west-2:891431133728:test"
 }
+
+variable "iam_master_arn" {
+  default = "arn:aws:iam::227024384036:user/bugg"
+}
+
+variable "account_id" {
+  default = "227024384036"
+}

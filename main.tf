@@ -26,10 +26,12 @@ module "elasticsearch" {
   cognito_identity_pool_id = module.cognito.identity_pool_id
   cognito_user_pool_id = module.cognito.user_pool_id
   cognito_auth_arn = module.cognito.auth_arn
-  account_id = "227024384036"
+  account_id = var.account_id
   cognito_domain = var.cognito_domain
   elasticsearch_domain_name = var.elasticsearch_domain
   name =  var.elasticsearch_name
   region = var.region
   sns_topic_arn = var.es_sns_arn
+  iam_master_arn = var.iam_master_arn
+  advanced_security_enabled = true
 }

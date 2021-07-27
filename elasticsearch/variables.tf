@@ -5,11 +5,11 @@ variable "name" {}
 variable "elasticsearch_domain_name" {}
 
 variable "elasticsearch_version" {
-  default = "7.9"
+  default = "7.10"
 }
 
 variable "elasticsearch_instance" {
-  default = "t2.small.elasticsearch"
+  default = "t3.medium.elasticsearch"
 }
 
 variable "elasticsearch_instance_count" {
@@ -33,3 +33,11 @@ variable "cognito_identity_pool_id" {}
 
 
 variable "cognito_auth_arn" {}
+
+variable "advanced_security_enabled" {
+  type = bool
+  default = false
+}
+variable "iam_master_arn" {
+  default = ""
+}

@@ -1,3 +1,4 @@
+
 resource "aws_elasticsearch_domain" "es" {
   domain_name           = var.elasticsearch_domain_name
   elasticsearch_version = var.elasticsearch_version
@@ -8,7 +9,7 @@ resource "aws_elasticsearch_domain" "es" {
 
   ebs_options {
     ebs_enabled = true
-    volume_type = "standard"
+    volume_type = "gp2"
     volume_size = 35
   }
 
@@ -26,7 +27,7 @@ resource "aws_elasticsearch_domain" "es" {
   }
 
   encrypt_at_rest {
-    enabled = false
+    enabled = true
   }
 
   node_to_node_encryption {
@@ -41,6 +42,14 @@ resource "aws_elasticsearch_domain" "es" {
   snapshot_options {
     automated_snapshot_start_hour = 23
   }
+
+  advanced_security_options {
+    enabled = var.advanced_security_enabled
+    master_user_options {
+      master_user_arn = var.iam_master_arn
+    }
+  }
+
 
   depends_on = [aws_iam_service_linked_role.es, aws_iam_role_policy_attachment.cognito_es_attach]
 }
